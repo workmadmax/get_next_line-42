@@ -6,7 +6,7 @@
 /*   By: mdouglas <mdouglas@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:43:08 by mdouglas          #+#    #+#             */
-/*   Updated: 2022/06/10 18:53:43 by mdouglas         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:23:41 by mdouglas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t  ft_strlen(char *str)
     return (i);
 }
 
-char    *ft_strrchr(char *str, int c)
+char    *ft_strchr(char *str, int c)
 {
     int     i;
     char    x;

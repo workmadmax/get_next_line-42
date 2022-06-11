@@ -6,7 +6,7 @@
 /*   By: mdouglas <mdouglas@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:08:44 by mdouglas          #+#    #+#             */
-/*   Updated: 2022/06/10 18:42:50 by mdouglas         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:57:27 by mdouglas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 char    *get_read(int fd, char *str)
 {
-    char    *s_temp;
+    char    *buf;
     int     i;
     
-    s_temp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-    if (!s_temp)
+    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    if (!buf)
         return (NULL);
     i = 1;
     while (!ft_strchr(str, '\n') && i != 0)
     {
-        i = read(fd, s_temp, BUFFER_SIZE);
+        i = read(fd, buf, BUFFER_SIZE);
         if (i == -1)
         {
-            free(s_temp);
+            free(buf);
             return (NULL);
         }
-        s_temp[i] = '\0';
-        str = gnl_strjoin(str, s_temp);
+        buf[i] = '\0';
+        str = gnl_strjoin(str, buf);
     }
-    free(s_temp);
+    free(buf);
     return (str);
 }
 
 char    *get_string(char *str)
 {
-    char    *s_temp;
+    char    *buf;
     int     i;
     
     i = 0;
@@ -46,22 +46,22 @@ char    *get_string(char *str)
         return (NULL);
     while (str[i] && str[i] != '\n')
         i++;
-    s_temp = (char *)malloc(sizeof(char) * (i + 2));
-    if (!s_temp)
+    buf = (char *)malloc(sizeof(char) * (i + 2));
+    if (!buf)
         return (NULL);
     i = 0;
     while (str[i] && str[i] != '\n')
     {
-        s_temp[i] = str[i];
+        buf[i] = str[i];
         i++;
     }
     if (str[i] == '\n')
     {
-        s_temp[i] = str[i];
+        buf[i] = str[i];
         i++;
     }
-    s_temp[i] = '\0';
-    return (s_temp);
+    buf[i] = '\0';
+    return (buf);
 }
 
 char    *get_next_line(int fd)
@@ -78,3 +78,7 @@ char    *get_next_line(int fd)
     buf = gnl_dup(buf);
     return (str);
 }
+
+#include <stdio.h>
+#include <fcntl.h>
+
