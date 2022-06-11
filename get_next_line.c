@@ -6,7 +6,7 @@
 /*   By: mdouglas <mdouglas@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:08:44 by mdouglas          #+#    #+#             */
-/*   Updated: 2022/06/11 15:57:27 by mdouglas         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:01:20 by mdouglas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,4 @@ char    *get_next_line(int fd)
     buf = gnl_dup(buf);
     return (str);
 }
-
-#include <stdio.h>
-#include <fcntl.h>
 
