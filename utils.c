@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdouglas <mdouglas@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:17:15 by mdouglas          #+#    #+#             */
-/*   Updated: 2022/09/24 00:05:59 by mdouglas         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:46:19 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,29 @@ void	verify_obj(t_game *game)
 		exit_game(game);
 }
 
-int	count_line(char *argv)
+int	count_line(char *arg)
 {
-	char	*line;
-	int	count;
-	int	fd;
+	char	*temps;
+	int		fd;
+	int		i;
 
-	count = 0;
-	fd = open(argv, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	fd = 0;
+	fd = open(arg, O_RDONLY);
+	if (fd < 0)
+		return (printf("Error\n"), 1);
+	temps = get_next_line(fd);
+	i = 1;
+	while (temps)
 	{
-		free(line);
-		line = get_next_line(fd);
-		count++;
+		free(temps);
+		temps = get_next_line(fd);
+		++i;
 	}
-	close (fd);
-	return (count);
+	free(temps);
+	close(fd);
+	return (i);
 }
+
 
 void	set_map(t_game *game)
 {

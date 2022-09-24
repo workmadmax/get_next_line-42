@@ -10,12 +10,12 @@
 # include "libft.h"
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 32
+# define BUFFER_SIZE 9999
 #endif
 
 /**
  * @brief Reads a line from a file descriptor
- * 
+ *
  * @param fd file descriptor to read.
  * @return Return a string including \\n if is a line.
  * In case of the file dont have \\n return

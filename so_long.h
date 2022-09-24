@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdouglas <mdouglas@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 13:32:47 by mdouglas          #+#    #+#             */
-/*   Updated: 2022/09/24 00:08:44 by mdouglas         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:23:46 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <mlx.h>
+# include "mlx.h"
 # include "./ft/libft.h"
 # include "./ft/get_next_line.h"
 # include <stdlib.h>
@@ -85,7 +85,7 @@ char	**ft_dup_map(char **map);
 
 /* map */
 
-void	parse_map(t_game *game);
+void	parse_map(t_game *game, char *argv[]);
 void	check_wall(t_game *game);
 void	check_elem(t_game *game);
 
@@ -99,7 +99,6 @@ void	set_img(t_game *game, char c);
 /* utils */
 
 int		keycode(int key, t_game *game);
-int		count_line(char *argv);
 void	set_map(t_game *game);
 void	check_ext(char *file, int argc);
 void	set_hero(t_game *game, int x, int y, char elem);
@@ -114,5 +113,6 @@ int	move_d(t_game *game);
 int	move_w(t_game *game);
 int	move_s(t_game *game);
 
+int	count_line(char *arg);
 
 #endif

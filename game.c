@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdouglas <mdouglas@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 18:32:49 by mdouglas          #+#    #+#             */
-/*   Updated: 2022/09/24 00:05:59 by mdouglas         ###   ########.fr       */
+/*   Updated: 2022/09/23 21:31:36 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,11 @@ int	main(int argc, char *argv[])
 {
 	t_game	game;
 
+	if (argc != 2)
+		return (printf("Error\n"), 1);
 	game.argv = argv[1];
-
 	check_ext(argv[1], argc);
-	parse_map(&game);
-	
+	parse_map(&game, argv);
 	init_mlx(&game);
-	
 	return (0);
 }

@@ -1,5 +1,5 @@
 NAME = libft.a
-CC = gcc -Wall -Wextra -Werror
+CC = gcc -g3 -Wall -Wextra -Werror
 LIB = ar rcs
 SRCS = 	ft_isalpha.c \
 		ft_isdigit.c \

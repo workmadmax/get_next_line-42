@@ -3,37 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdouglas <mdouglas@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 22:34:13 by mdouglas          #+#    #+#             */
-/*   Updated: 2022/09/24 00:05:59 by mdouglas         ###   ########.fr       */
+/*   Updated: 2022/09/23 21:02:44 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	parse_map(t_game *game)
+void	parse_map(t_game *game, char *argv[])
 {
 	int		fd;
 	char	*temps;
+	int		lines;
 	t_loc	pos;
 
-	game->map = malloc(sizeof(char **) * (count_line(game->argv) + 1));
-
+	lines = count_line(argv[1]);
+	game->map = malloc(sizeof(char **) * (lines + 1));
 	if (!game->map)
 		exit_error("Faleid to allocte memory");
-	fd = open(game->argv, O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		exit_error("Error map not exist!");
 	pos.y = 0;
-	while (1)
+	pos.x = 0;
+	while (pos.y <= lines)
 	{
 		temps = get_next_line(fd);
-		if (temps == 0)
-			break;
-		game->map[pos.y] = ft_strtrim(temps, "\n");
+		game->map[pos.y++] = ft_strtrim(temps, "\n");
 		free(temps);
-		pos.y++;
 	}
 	close(fd);
 	set_map(game);
